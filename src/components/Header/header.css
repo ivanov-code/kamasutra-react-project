@@ -1,0 +1,25 @@
+.header {
+    background-color: #fff;
+    min-height: var(--header-height);
+    max-height: var(--header-height);
+    display: flex;
+    align-items: center;
+}
+
+.header__content {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: var(--layout-width);
+    width: var(--layout-width);
+}
+
+.header__avatar-img {
+    max-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
+}
+
+.header__profile-name {
+    margin-left: var(--spacing-s);
+}
