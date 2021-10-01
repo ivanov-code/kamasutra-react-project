@@ -1,0 +1,9 @@
+.profile {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--page-block-shadow);
+}
+
+.profile__img {
+    max-width: 123px;
+}

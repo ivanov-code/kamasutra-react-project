@@ -1,31 +1,38 @@
 import React from "react";
+import cssClasses from "./post.module.css";
+import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="navbar">
+        <div className={cssClasses.navbar}>
             <ul>
                 <li>
-                    <a href="#">
+                    <NavLink to='/my-profile' className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
                         Profile
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#">
+                    <NavLink to='/dialogs' className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
                         Messages
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
                         News
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
                         Music
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
                         Settings
                     </a>
                 </li>

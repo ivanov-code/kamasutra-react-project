@@ -1,9 +1,11 @@
 .header {
-    background-color: #fff;
+    background-color: var(--white);
     min-height: var(--header-height);
     max-height: var(--header-height);
     display: flex;
     align-items: center;
+    margin-bottom: var(--spacing-m);
+    box-shadow: var(--page-block-shadow);
 }
 
 .header__content {
@@ -14,12 +16,12 @@
     width: var(--layout-width);
 }
 
-.header__avatar-img {
-    max-width: 32px;
-    min-height: 32px;
+.header__avatarImg {
+    max-width: var(--icon-size-m);
+    min-height: var(--icon-size-m);
     border-radius: 50%;
 }
 
-.header__profile-name {
+.header__profileName {
     margin-left: var(--spacing-s);
 }
