@@ -1,8 +1,9 @@
 import React from "react";
-import cssClasses from "./post.module.css";
+import cssClasses from "./navbar.module.css";
 import {NavLink} from "react-router-dom";
+import {FriendsSmallList} from "./Friends-small-list/friends-small-list";
 
-const Navbar = () => {
+export const Navbar = (props) => {
     return (
         <div className={cssClasses.navbar}>
             <ul>
@@ -37,8 +38,10 @@ const Navbar = () => {
                     </a>
                 </li>
             </ul>
+
+            <div>
+                <FriendsSmallList friendsList={props.state.friends}/>
+            </div>
         </div>
     );
 };
-
-export default Navbar;

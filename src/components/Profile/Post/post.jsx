@@ -1,12 +1,12 @@
 import React from "react";
 import cssClasses from "./post.module.css";
 
-const Post = () => {
+export const Post = (props) => {
     return (
         <div className={cssClasses.post}>
-           post 1
+            {props.text}
+            <hr/>
+            Likes {props.likesCount}
         </div>
     );
 };
-
-export default Post;
