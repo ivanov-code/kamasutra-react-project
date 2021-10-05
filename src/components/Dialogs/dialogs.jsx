@@ -2,7 +2,7 @@ import React from "react";
 import cssClasses from "./dialogs.module.css";
 import {DialogItem} from "./DialogItem/dialog-item";
 import {MessageItem} from "./MessageItem/message-item";
-import {AddPost} from "./AddPost/add-post";
+import {AddMessage} from "./AddMessage/add-message";
 
 export const Dialogs = (props) => {
     const dialogsJSX = props.state.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name}
@@ -19,7 +19,7 @@ export const Dialogs = (props) => {
                 <ul className={cssClasses.dialogs__messages}>
                     {messagesJSX}
                 </ul>
-                <AddPost />
+                <AddMessage state={props.state} dispatch={props.dispatch}/>
             </div>
 
         </div>

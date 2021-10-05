@@ -4,7 +4,6 @@ import {Navbar} from "./components/Navbar/navbar";
 import {Profile} from "./components/Profile/profile";
 import {Dialogs} from "./components/Dialogs/dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {addPost} from "./redux/state";
 
 const App = (props) => {
     return (
@@ -18,8 +17,15 @@ const App = (props) => {
                         <Navbar state={props.state.navbar}/>
                     </nav>
                     <section>
-                        <Route path='/my-profile' render={ () => <Profile state={props.state.profilePage} addPost={addPost}/> }/>
-                        <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} />}/>
+                        <Route path='/my-profile' render={() => <Profile
+                            state={props.state.profilePage}
+                            dispatch={props.dispatch}
+                        />
+                        }/>
+                        <Route path='/dialogs' render={() => <Dialogs
+                            state={props.state.dialogsPage}
+                            dispatch={props.dispatch}
+                        />}/>
                     </section>
                 </div>
             </div>

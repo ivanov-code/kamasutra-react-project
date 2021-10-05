@@ -1,21 +1,28 @@
 import React from "react";
 import cssClasses from "./posts.module.css";
 import {Post} from "../Post/post";
+import {addPostActionCreator, updateNewPostActionCreator} from "../../../redux/store";
 
 export const Posts = (props) => {
-    const posts = props.posts
-        .map(post => <Post key={post.id} text={post.text} id={post.id} likesCount={post.likesCount} />);
+    const posts = props.profilePage.posts
+        .map(post => <Post key={post.id} text={post.text} id={post.id} likesCount={post.likesCount}/>);
 
-    const textareaRef = React.createRef();
     const addPost = () => {
-        props.addPost(textareaRef.current.value);
+        props.dispatch(addPostActionCreator());
     };
+
+    const onChangeTextarea = (event) => {
+        const action = updateNewPostActionCreator(event.target.value);
+        props.dispatch(action);
+    }
 
     return (
         <div>
             <h3>My posts</h3>
             <div>
-                <textarea ref={textareaRef} name="message" cols="30" rows="10"></textarea>
+                <textarea name="message" id="" cols="30" rows="10"
+                    onChange={onChangeTextarea}
+                    value={props.profilePage.newPostMessage}/>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>
