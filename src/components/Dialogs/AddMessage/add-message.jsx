@@ -1,5 +1,5 @@
 import React from "react";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/store";
+import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogs-reducer";
 
 export const AddMessage = (props) => {
     const textareaRef = React.createRef();

@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_VALUE = 'UPDATE-NEW-POST-VALUE';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_DIALOG_MESSAGE_VALUE = 'UPDATE-NEW-DIALOG-MESSAGE-VALUE';
+import {dialogsReducer} from "./dialogs-reducer";
+import {profileReducer} from "./profile-reducer";
 
 export const store = {
     _state: {
@@ -90,52 +88,10 @@ export const store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                if (!this._state.profilePage.newPostMessage) {
-                    console.error('Message is empty');
-                    return;
-                }
-
-                const newPost = {
-                    text: this._state.profilePage.newPostMessage,
-                    id: this._state.profilePage.posts.length ? this._state.profilePage.posts[this._state.profilePage.posts.length - 1].id + 1 : 0,
-                    likesCount: 0
-                };
-
-                this._state.profilePage.posts.push(newPost);
-                this._callSubscriber(this._state);
-                break;
-
-            case UPDATE_NEW_POST_VALUE:
-                this._state.profilePage.newPostMessage = action.text;
-                this._callSubscriber(this._state);
-                break;
-
-            case ADD_MESSAGE:
-                if (!this._state.dialogsPage.newDialogMessage) {
-                    console.error('Message is empty');
-                    return;
-                }
-
-                const newDialogMessage = {
-                    text: this._state.dialogsPage.newDialogMessage,
-                    id: this._state.dialogsPage.messages.length ? this._state.dialogsPage.messages[this._state.dialogsPage.messages.length - 1].id + 1 : 0
-                };
-
-                this._state.dialogsPage.messages.push(newDialogMessage);
-                this._callSubscriber(this._state);
-                break;
-            case UPDATE_NEW_DIALOG_MESSAGE_VALUE:
-                this._state.dialogsPage.newDialogMessage = action.text;
-                this._callSubscriber(this._state);
-        }
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._callSubscriber(this._state);
     }
 };
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_VALUE, text});
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_DIALOG_MESSAGE_VALUE, text});
 
 window.store = store;
