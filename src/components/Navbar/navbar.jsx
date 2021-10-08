@@ -1,7 +1,7 @@
 import React from "react";
 import cssClasses from "./navbar.module.css";
 import {NavLink} from "react-router-dom";
-import {FriendsSmallList} from "./Friends-small-list/friends-small-list";
+import {FriendsSmallListContainer} from "./Friends-small-list/FriendsSmallListContainer/friends-small-list-container";
 
 export const Navbar = (props) => {
     return (
@@ -17,6 +17,12 @@ export const Navbar = (props) => {
                     <NavLink to='/dialogs' className={cssClasses.navbar__listItem}>
                         <div className={cssClasses.navbar__listItemIcon}></div>
                         Messages
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/users' className={cssClasses.navbar__listItem}>
+                        <div className={cssClasses.navbar__listItemIcon}></div>
+                        Users
                     </NavLink>
                 </li>
                 <li>
@@ -40,7 +46,7 @@ export const Navbar = (props) => {
             </ul>
 
             <div>
-                <FriendsSmallList friendsList={props.state.friends}/>
+                <FriendsSmallListContainer />
             </div>
         </div>
     );

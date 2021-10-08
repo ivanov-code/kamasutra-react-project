@@ -1,10 +1,26 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_VALUE = 'UPDATE-NEW-POST-VALUE';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_VALUE = 'UPDATE_NEW_POST_VALUE';
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_VALUE, text});
 
-export const profileReducer = (state, action) => {
+const initialState = {
+    posts: [
+        {
+            text: 'My first post',
+            id: 1,
+            likesCount: 4
+        },
+        {
+            text: 'My second post',
+            id: 2,
+            likesCount: 4
+        },
+    ],
+    newPostMessage: ''
+}
+
+export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             if (!state.newPostMessage) {
@@ -18,15 +34,20 @@ export const profileReducer = (state, action) => {
                 likesCount: 0
             };
 
-            state.posts.push(newPost);
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostMessage: ''
+            };
+
 
         case UPDATE_NEW_POST_VALUE:
-            state.newPostMessage = action.text;
-            return state;
+            return {
+                ...state,
+                newPostMessage: action.text
+            };
 
         default:
-            console.error('Incorrectly action.type in dialogsReducer');
             return state;
     }
 };

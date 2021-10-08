@@ -2,10 +2,11 @@ import './App.css';
 import {Header} from "./components/Header/header";
 import {Navbar} from "./components/Navbar/navbar";
 import {Profile} from "./components/Profile/profile";
-import {Dialogs} from "./components/Dialogs/dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer/dialogs-container";
+import {UsersPageContainer} from "./components/UsersPage/users-page-container";
 
-const App = (props) => {
+const App = () => {
     return (
         <BrowserRouter>
             <div className="app-layout">
@@ -14,18 +15,12 @@ const App = (props) => {
                 </header>
                 <div className="app-layout__lower-wrapper">
                     <nav>
-                        <Navbar state={props.state.navbar}/>
+                        <Navbar />
                     </nav>
                     <section>
-                        <Route path='/my-profile' render={() => <Profile
-                            state={props.state.profilePage}
-                            dispatch={props.dispatch}
-                        />
-                        }/>
-                        <Route path='/dialogs' render={() => <Dialogs
-                            state={props.state.dialogsPage}
-                            dispatch={props.dispatch}
-                        />}/>
+                        <Route path='/my-profile' render={ () => <Profile/> }/>
+                        <Route path='/dialogs' render={ () => <DialogsContainer/> }/>
+                        <Route path='/users' render={ () => <UsersPageContainer/> }/>
                     </section>
                 </div>
             </div>

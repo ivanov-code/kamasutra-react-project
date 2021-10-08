@@ -1,16 +1,14 @@
 import React from "react";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogs-reducer";
 
 export const AddMessage = (props) => {
     const textareaRef = React.createRef();
 
     const sendMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.sendMessage();
     };
 
     const onChangeTextarea = (event) => {
-        const action = updateNewMessageActionCreator(event.target.value);
-        props.dispatch(action);
+        props.onChangeTextarea(event.target.value);
     };
 
     return (
@@ -18,7 +16,7 @@ export const AddMessage = (props) => {
             <textarea name="message" cols="30" rows="10"
                       ref={textareaRef}
                       onChange={onChangeTextarea}
-                      value={props.state.newDialogMessage}
+                      value={props.newDialogMessage}
             />
             <div>
                 <button onClick={sendMessage}>Send message</button>
