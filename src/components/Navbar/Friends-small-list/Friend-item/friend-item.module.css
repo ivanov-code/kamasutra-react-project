@@ -1,0 +1,8 @@
+.friendItem {
+
+}
+
+.friendItem__avatar {
+    max-width: var(--icon-size-m);
+    max-height: var(--icon-size-m);
+}
