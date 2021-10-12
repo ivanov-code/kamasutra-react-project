@@ -4,11 +4,11 @@ export const AddMessage = (props) => {
     const textareaRef = React.createRef();
 
     const sendMessage = () => {
-        props.sendMessage();
+        props.addMessage();
     };
 
     const onChangeTextarea = (event) => {
-        props.onChangeTextarea(event.target.value);
+        props.updateNewMessage(event.target.value);
     };
 
     return (

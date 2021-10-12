@@ -1,8 +1,8 @@
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_NEW_DIALOG_MESSAGE_VALUE = 'UPDATE_NEW_DIALOG_MESSAGE_VALUE';
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_DIALOG_MESSAGE_VALUE, text});
+export const addMessage = () => ({type: ADD_MESSAGE});
+export const updateNewMessage = (text) => ({type: UPDATE_NEW_DIALOG_MESSAGE_VALUE, text});
 
 const initialState = {
     messages: [

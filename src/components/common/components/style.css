@@ -1,0 +1,48 @@
+@-webkit-keyframes dashb99a4 {
+    0% {
+        stroke-dashoffset: 60
+    }
+    50% {
+        stroke-dashoffset: 15;
+        transform: rotate(135deg)
+    }
+    100% {
+        stroke-dashoffset: 60;
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes dashb99a4 {
+    0% {
+        stroke-dashoffset: 60
+    }
+    50% {
+        stroke-dashoffset: 15;
+        transform: rotate(135deg)
+    }
+    100% {
+        stroke-dashoffset: 60;
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes rotator-ltr {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: rotator-ltr 1.4s linear infinite;
+}
+
+.spinner__path {
+    animation-name: dashb99a4;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+}

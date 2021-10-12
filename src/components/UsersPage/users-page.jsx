@@ -1,59 +1,45 @@
 import React from "react";
+import defaultUserImg from '../../assets/images/user-default.jpeg';
+import cssClasses from './styles.module.css'
+import {Loader} from "../common/components/loader";
+import {NavLink} from "react-router-dom";
 
 export const UsersPage = (props) => {
-    if (!props.users.length) {
-        props.setUsers([
-            {
-                id: 1,
-                photoUrl: 'https://sun9-30.userapi.com/impg/vCKay1wmE5eI06ESsGQHLSb3c9RcxHSGlWFyAw/0hdzFWDyXJ0.jpg?size=2560x2048&quality=96&sign=4fee8b06194dbf407d44fe4d9b6d30b2&type=album',
-                name: 'Vasiliy',
-                lastName: 'Petrov',
-                status: 'I am boss',
-                location: {
-                    country: 'Russia',
-                    city: 'Moscow'
-                }
-            },
-            {
-                id: 2,
-                photoUrl: 'https://sun9-30.userapi.com/impg/vCKay1wmE5eI06ESsGQHLSb3c9RcxHSGlWFyAw/0hdzFWDyXJ0.jpg?size=2560x2048&quality=96&sign=4fee8b06194dbf407d44fe4d9b6d30b2&type=album',
-                name: 'Vasiliy',
-                lastName: 'Petrov',
-                status: 'I am boss',
-                location: {
-                    country: 'Russia',
-                    city: 'Moscow'
-                }
-            },
-            {
-                id: 3,
-                photoUrl: 'https://sun9-30.userapi.com/impg/vCKay1wmE5eI06ESsGQHLSb3c9RcxHSGlWFyAw/0hdzFWDyXJ0.jpg?size=2560x2048&quality=96&sign=4fee8b06194dbf407d44fe4d9b6d30b2&type=album',
-                name: 'Vasiliy',
-                lastName: 'Petrov',
-                status: 'I am boss',
-                location: {
-                    country: 'Russia',
-                    city: 'Moscow'
-                }
-            },
-        ]);
+
+    const setCurrentPage = (pageNumber) => {
+        props.setCurrentPage(pageNumber);
     }
 
     return (
         <div>
+            <div>
+                {
+                    props.pages.map((pageNumber, index) => {
+                        return <span onClick={() => {
+                            setCurrentPage(pageNumber)
+                        }}
+                                     key={index}
+                                     className={props.currentPageNumber === pageNumber ? cssClasses.activeLink : null}>
+                            {pageNumber}
+                        </span>;
+                    })
+                }
+            </div>
             {
                 props.users.map(user => {
                     return (
                         <div key={user.id}>
-                            <img src={user.photoUrl} alt="avatar" width='50px'/>
-                            <div>{user.name + ' ' + user.lastName}</div>
-                            <div>{user.state}</div>
-                            <div>{user.location.country + ' ' + user.location.city}</div>
+                            <NavLink to={`/profile/${user.id}`}>
+                                <img style={{cursor: 'pointer'}} src={user.photos.small || defaultUserImg} alt="avatar" width='50px'/>
+                            </NavLink>
+                            <div>{user.name}</div>
+                            <div>{user.status}</div>
                             <hr/>
                         </div>
                     )
                 })
             }
+            <Loader isLoading={props.isLoading}/>
         </div>
-    )
-};
+    );
+}

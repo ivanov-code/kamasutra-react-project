@@ -1,0 +1,8 @@
+.activeLink {
+    color: var(--accent);
+}
+
+span {
+    margin-right: var(--spacing-s);
+    cursor: pointer;
+}

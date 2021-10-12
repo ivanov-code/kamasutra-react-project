@@ -10,7 +10,7 @@ export const Posts = (props) => {
     };
 
     const onChangeTextarea = (event) => {
-        props.onChangeTextarea(event.target.value);
+        props.updateNewPost(event.target.value);
     }
 
     return (

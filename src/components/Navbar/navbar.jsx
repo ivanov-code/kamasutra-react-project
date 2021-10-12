@@ -8,7 +8,7 @@ export const Navbar = (props) => {
         <div className={cssClasses.navbar}>
             <ul>
                 <li>
-                    <NavLink to='/my-profile' className={cssClasses.navbar__listItem}>
+                    <NavLink to='/profile' className={cssClasses.navbar__listItem}>
                         <div className={cssClasses.navbar__listItemIcon}></div>
                         Profile
                     </NavLink>

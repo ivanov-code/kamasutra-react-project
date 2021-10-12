@@ -1,10 +1,10 @@
 import './App.css';
 import {Header} from "./components/Header/header";
 import {Navbar} from "./components/Navbar/navbar";
-import {Profile} from "./components/Profile/profile";
+import ProfileContainer from "./components/Profile/profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer/dialogs-container";
-import {UsersPageContainer} from "./components/UsersPage/users-page-container";
+import UsersPageContainer from "./components/UsersPage/users-page-container";
 
 const App = () => {
     return (
@@ -18,7 +18,7 @@ const App = () => {
                         <Navbar />
                     </nav>
                     <section>
-                        <Route path='/my-profile' render={ () => <Profile/> }/>
+                        <Route path='/profile/:userId?' render={ () => <ProfileContainer/> }/>
                         <Route path='/dialogs' render={ () => <DialogsContainer/> }/>
                         <Route path='/users' render={ () => <UsersPageContainer/> }/>
                     </section>

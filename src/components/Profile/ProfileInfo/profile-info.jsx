@@ -1,10 +1,20 @@
 import React from "react";
 import cssClasses from "./profile-info.module.css";
+import userDefaultImg from "../../../assets/images/user-default.jpeg"
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props) => {
+    if (!props.userProfile) {
+        return <img className={cssClasses.profileInfo__img} src={userDefaultImg} alt="avatar"/>
+    }
     return (
         <div>
-            <img className={cssClasses.profileInfo__img} src="https://sun9-30.userapi.com/impg/vCKay1wmE5eI06ESsGQHLSb3c9RcxHSGlWFyAw/0hdzFWDyXJ0.jpg?size=2560x2048&quality=96&sign=4fee8b06194dbf407d44fe4d9b6d30b2&type=album" alt="avatar"/>
+            <img className={cssClasses.profileInfo__img} src={props.userProfile.photos.large || userDefaultImg} alt="avatar"/>
+            <div>{props.userProfile.aboutMe || null}</div>
+            <div>
+                <span>{props.userProfile.contacts.vk || null}</span>
+                <span>{props.userProfile.contacts.instagram || null}</span>
+                <span>{props.userProfile.contacts.twitter || null}</span>
+            </div>
         </div>
     );
 };
