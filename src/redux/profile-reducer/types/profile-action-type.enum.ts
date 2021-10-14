@@ -1,0 +1,5 @@
+export enum ProfileActionTypeEnum {
+    ADD_POST = 'ADD_POST',
+    UPDATE_NEW_POST_VALUE = 'UPDATE_NEW_POST_VALUE',
+    SET_USER_PROFILE = 'SET_USER_PROFILE'
+}
